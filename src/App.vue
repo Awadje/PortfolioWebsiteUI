@@ -94,14 +94,12 @@
 
         <div v-show="!miniVariant" class="logo">
         </div>
-        <v-list-tile to="/">
-
+        
+        <v-list-tile :to="{ name: 'Posts'}">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
           </v-list-tile-action>
-
-          <v-list-tile-title>Overzicht</v-list-tile-title>
-
+          <v-list-tile-title >Posts</v-list-tile-title>
         </v-list-tile>
 
          <v-list-tile :to="{ name: 'Skills'}">

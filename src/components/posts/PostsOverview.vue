@@ -2,27 +2,26 @@
         <v-container fluid grid-list-md>
           <v-layout row wrap>
             <v-flex
-              v-bind="{ [`xs${skill.flex}`]: true }"
-              v-for="skill in skills"
-              :key="skill.name"
+              v-bind="{ [`xs${post.flex}`]: true }"
+              v-for="post in posts"
+              :key="post.name"
             >
               <v-card>
                 <v-card-media
-                  :src="skill.src"
+                  :src="post.imgUrl"
                   height="200px"
                 >
                   <v-container fill-height fluid>
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>
-                        <span class="headline white--text" v-text="skill.name"/>
+                        <span class="headline white--text" v-text="post.title"/>
                       </v-flex>
                     </v-layout>
                   </v-container>
                 </v-card-media>
                 <v-card-title>
                   <div>
-                    <span class="grey--text">Coolness: {{ skill.coolness}}</span><br>
-                    <span>Skill Level: {{ skill.skillLevel }} </span>
+                    <span class="grey--text">{{ post.content }}</span><br>
                   </div>
                 </v-card-title>
                 <v-card-actions>
@@ -50,18 +49,18 @@ export default {
   name: 'App',
   data () {
     return {
-      skills: []
+      posts: []
     }
   },
   mounted () {
-    this.getSkillList()
+    this.getPostList()
   },
   methods: {
-    getSkillList () {
-      axios.get(`http://localhost:3005/v1/skill`)
+    getPostList () {
+      axios.get(`http://localhost:3005/v1/post`)
         .then(response => {
           // JSON responses are automatically parsed.
-          this.skills = response.data
+          this.posts = response.data
         })
         .catch(e => {
           this.errors.push(e)
