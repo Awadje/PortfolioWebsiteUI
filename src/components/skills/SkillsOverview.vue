@@ -50,10 +50,23 @@ export default {
   name: 'App',
   data () {
     return {
-      skills: []
+      skills: [],
+      id: '',
+      errors: []
     }
   },
   mounted () {
+    const AuthStr = `Bearer ${localStorage.getItem('token')}`
+    console.log(AuthStr)
+    axios.get(`http://localhost:3005/v1/account/me`, { headers: { Authorization: AuthStr } })
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.id = response.data.id
+        console.log(this.id)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     this.getSkillList()
   },
   methods: {
@@ -70,3 +83,7 @@ export default {
   }
 }
 </script>
+
+
+
+

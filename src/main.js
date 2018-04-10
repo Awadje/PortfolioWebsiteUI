@@ -18,7 +18,9 @@ import {
   VSubheader,
   VSwitch,
   VCard,
-  VDataIterator
+  VDataIterator,
+  VForm,
+  VTextField
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -37,7 +39,9 @@ Vue.use(Vuetify, {
     VSubheader,
     VSwitch,
     VCard,
-    VDataIterator
+    VDataIterator,
+    VForm,
+    VTextField
   }
 })
 
